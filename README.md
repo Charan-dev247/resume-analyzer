@@ -1,4 +1,3 @@
-<img width="1220" height="483" alt="image" src="https://github.com/user-attachments/assets/2282bb4f-1ae5-4112-b50e-43d8943217df" />
 
 # 🚀 AI Resume Analyzer (NLP)
 
