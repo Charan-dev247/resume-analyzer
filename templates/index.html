@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" >
+</head>
+<body>
+
+<div class="container">
+    <h2>🚀 Resume Analyzer</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        <label>Upload Resume</label>
+        <input type="file" name="resume" required>
+
+        <label>Paste Job Description</label>
+        <textarea name="job_desc" rows="8" placeholder="Paste job description here..."></textarea>
+
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if score is not none %}
+
+{% if score > 70 %}
+<div class="result" style="background:#d4edda;">
+{% elif score > 40 %}
+<div class="result" style="background:#fff3cd;">
+{% else %}
+<div class="result" style="background:#f8d7da;">
+{% endif %}
+
+    Match Score: {{score}}%
+
+</div>
+
+{% endif %}
+</div>
+
+</body>
+</html>
