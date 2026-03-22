@@ -65,6 +65,7 @@ git clone https://github.com/YOUR-USERNAME/resume-analyzer-nlp.git
 cd resume-analyzer-nlp
 pip install -r requirements.txt
 python app.py
+```
 
 ## ⚠️ Design Decisions
 
