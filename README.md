@@ -82,4 +82,10 @@ python app.py
 - 📄 Support additional file formats (DOCX, TXT)
 - 🎯 Provide resume improvement suggestions
 
-## 📂 Project Structure
+## 👤 Author
+
+**Suluru Charan Sai**  
+
+📧 Email: sulurucharan@gmail.com  
+🌐 GitHub: https://github.com/Charan-dev247  
+💼 LinkedIn: https://linkedin.com/in/suluru-charan-sai-4b33a6323  
