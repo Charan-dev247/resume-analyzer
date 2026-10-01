@@ -13,6 +13,13 @@ from ai.rag import generate_rag_analysis
 
 app = Flask(__name__)
 
+@app.route('/api/health', methods=['GET'])
+def health():
+    return {
+        "status": "ok",
+        "service": "resume-intelligence-ai"
+    }
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
