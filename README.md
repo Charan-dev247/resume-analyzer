@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # 🚀 AI Resume Analyzer (NLP)
 
@@ -89,3 +90,125 @@ python app.py
 📧 Email: sulurucharan@gmail.com  
 🌐 GitHub: https://github.com/Charan-dev247  
 💼 LinkedIn: https://linkedin.com/in/suluru-charan-sai-4b33a6323  
+=======
+# AI Resume Intelligence
+
+An AI-powered resume analysis platform that compares a candidate's resume with a job description using traditional TF-IDF similarity and a Retrieval-Augmented Generation (RAG) pipeline.
+
+## Features
+
+- Resume PDF text extraction
+- Traditional TF-IDF keyword similarity
+- Text chunking
+- Semantic embeddings using Sentence Transformers
+- ChromaDB vector database
+- Semantic retrieval of relevant resume sections
+- LLM-powered resume analysis
+- Matching skills identification
+- Missing skills detection
+- Skill-gap analysis
+- Relevant experience extraction
+- Personalized recommendations
+- React frontend
+- Node.js + Express REST API
+- Python Flask AI backend
+
+## Architecture
+
+React Frontend
+       |
+       v
+Node.js + Express REST API
+       |
+       v
+Python Flask AI Backend
+       |
+       +----------------------+
+       |                      |
+       v                      v
+TF-IDF Similarity       RAG Pipeline
+                              |
+                              v
+                     Text Chunking
+                              |
+                              v
+                     Sentence Embeddings
+                              |
+                              v
+                         ChromaDB
+                              |
+                              v
+                       Relevant Chunks
+                              |
+                              v
+                           Groq LLM
+                              |
+                              v
+                       Structured Analysis
+
+## Tech Stack
+
+### Frontend
+- React
+- Vite
+- HTML
+- CSS
+- JavaScript
+
+### Backend
+- Node.js
+- Express.js
+- REST APIs
+- Python
+- Flask
+
+### AI / NLP
+- Sentence Transformers
+- Embeddings
+- Retrieval-Augmented Generation (RAG)
+- TF-IDF
+- Cosine Similarity
+- Large Language Models
+
+### Database
+- ChromaDB
+
+## How It Works
+
+1. User uploads a resume PDF.
+2. User provides a job description.
+3. The React frontend sends the data to the Node.js/Express API.
+4. Express forwards the request to the Flask AI backend.
+5. The resume text is extracted from the PDF.
+6. TF-IDF similarity is calculated as a traditional keyword-based baseline.
+7. The resume is divided into text chunks.
+8. Each chunk is converted into an embedding.
+9. Embeddings are stored in ChromaDB.
+10. The job description is converted into an embedding.
+11. ChromaDB retrieves the most relevant resume sections.
+12. The retrieved context is sent to an LLM.
+13. The LLM generates structured resume-job analysis.
+14. Results are returned to the React frontend.
+
+## AI Analysis
+
+The system generates:
+
+- AI match score
+- Matching skills
+- Missing skills
+- Relevant experience
+- Skill gaps
+- Recommendations
+
+The application also displays the traditional TF-IDF similarity alongside the RAG-based analysis to demonstrate the difference between lexical matching and semantic analysis.
+
+## Running Locally
+
+### Python backend
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+>>>>>>> 4901116 (Build AI resume intelligence full stack pipeline)

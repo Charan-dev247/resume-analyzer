@@ -1,40 +1,274 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Resume Analyzer</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" >
+
+    <title>AI Resume Intelligence</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
 </head>
+
+
 <body>
 
 <div class="container">
-    <h2>🚀 Resume Analyzer</h2>
 
-    <form method="POST" enctype="multipart/form-data">
+    <h2>🚀 AI Resume Intelligence</h2>
+
+    <p>
+        Analyze your resume against a job description using
+        semantic search, embeddings and AI.
+    </p>
+
+
+    <!-- Upload Form -->
+
+    <form
+        method="POST"
+        enctype="multipart/form-data"
+    >
+
         <label>Upload Resume</label>
-        <input type="file" name="resume" required>
+
+        <input
+            type="file"
+            name="resume"
+            accept=".pdf"
+            required
+        >
+
 
         <label>Paste Job Description</label>
-        <textarea name="job_desc" rows="8" placeholder="Paste job description here..."></textarea>
 
-        <button type="submit">Analyze</button>
+        <textarea
+            name="job_desc"
+            rows="10"
+            placeholder="Paste job description here..."
+            required
+        ></textarea>
+
+
+        <button type="submit">
+            Analyze Resume
+        </button>
+
     </form>
 
-    {% if score is not none %}
 
-{% if score > 70 %}
-<div class="result" style="background:#d4edda;">
-{% elif score > 40 %}
-<div class="result" style="background:#fff3cd;">
-{% else %}
-<div class="result" style="background:#f8d7da;">
-{% endif %}
+    <!-- Error -->
 
-    Match Score: {{score}}%
+    {% if error %}
 
-</div>
+    <div class="error">
 
-{% endif %}
+        {{ error }}
+
+    </div>
+
+    {% endif %}
+
+
+    <!-- Results -->
+
+    {% if analysis %}
+
+    <div class="results">
+
+
+        <!-- AI Match Score -->
+
+        <div class="result ai-score">
+
+            <h3>🤖 AI Match Score</h3>
+
+            <div class="score-number">
+
+                {{ analysis.match_score }}%
+
+            </div>
+
+        </div>
+
+
+        <!-- Traditional TF-IDF -->
+
+        {% if score is not none %}
+
+        <div class="result">
+
+            <strong>
+                Traditional TF-IDF Similarity:
+            </strong>
+
+            {{ score }}%
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- Matching Skills -->
+
+        <div class="result">
+
+            <h3>✅ Matching Skills</h3>
+
+            {% if analysis.matching_skills %}
+
+            <ul>
+
+                {% for skill in analysis.matching_skills %}
+
+                <li>
+                    {{ skill }}
+                </li>
+
+                {% endfor %}
+
+            </ul>
+
+            {% else %}
+
+            <p>No matching skills identified.</p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- Missing Skills -->
+
+        <div class="result">
+
+            <h3>⚠️ Missing Skills</h3>
+
+            {% if analysis.missing_skills %}
+
+            <ul>
+
+                {% for skill in analysis.missing_skills %}
+
+                <li>
+                    {{ skill }}
+                </li>
+
+                {% endfor %}
+
+            </ul>
+
+            {% else %}
+
+            <p>No major missing skills identified.</p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- Relevant Experience -->
+
+        <div class="result">
+
+            <h3>💼 Relevant Experience</h3>
+
+            {% if analysis.relevant_experience %}
+
+            <ul>
+
+                {% for item in analysis.relevant_experience %}
+
+                <li>
+                    {{ item }}
+                </li>
+
+                {% endfor %}
+
+            </ul>
+
+            {% else %}
+
+            <p>
+                No directly relevant experience identified.
+            </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- Skill Gaps -->
+
+        <div class="result">
+
+            <h3>📊 Skill Gaps</h3>
+
+            {% if analysis.skill_gaps %}
+
+            <ul>
+
+                {% for item in analysis.skill_gaps %}
+
+                <li>
+                    {{ item }}
+                </li>
+
+                {% endfor %}
+
+            </ul>
+
+            {% else %}
+
+            <p>
+                No major skill gaps identified.
+            </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- Recommendations -->
+
+        <div class="result">
+
+            <h3>🚀 Recommendations</h3>
+
+            {% if analysis.recommendations %}
+
+            <ul>
+
+                {% for item in analysis.recommendations %}
+
+                <li>
+                    {{ item }}
+                </li>
+
+                {% endfor %}
+
+            </ul>
+
+            {% else %}
+
+            <p>
+                No recommendations available.
+            </p>
+
+            {% endif %}
+
+        </div>
+
+
+    </div>
+
+    {% endif %}
+
+
 </div>
 
 </body>
+
 </html>
