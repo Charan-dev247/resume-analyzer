@@ -58,12 +58,14 @@ app.post("/api/analyze", upload.single("resume"), async (req, res) => {
         formData.append("job_desc", jobDesc);
 
         // Send request to Python Flask AI backend
+
+        const flaskApiUrl = 
+          process.env.FLASK_API_URL || "http://127.0.0.1:10000";
+
         const response = await axios.post(
-            "http://127.0.0.1:10000/api/analyze",
+            `${flaskApiUrl}/api/analyze`,
             formData,
-            {
-                headers: formData.getHeaders()
-            }
+            { headers: formData.getHeaders() }
         );
 
         // Send Flask's AI result back to the frontend
@@ -84,7 +86,7 @@ app.post("/api/analyze", upload.single("resume"), async (req, res) => {
     }
 });
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
     console.log(`Node.js server running on http://localhost:${PORT}`);
