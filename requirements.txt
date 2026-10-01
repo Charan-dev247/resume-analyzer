@@ -2,7 +2,7 @@ flask
 scikit-learn
 nltk
 PyPDF2
-sentence-transformers
+fastembed
 chromadb
 groq
 python-dotenv

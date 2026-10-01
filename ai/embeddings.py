@@ -1,16 +1,21 @@
-from sentence_transformers import SentenceTransformer
+from fastembed import TextEmbedding
 
-model = SentenceTransformer("all-MiniLM-L6-v2")
+model = TextEmbedding(
+    model_name="BAAI/bge-small-en-v1.5"
+)
+
 
 def generate_embedding(text):
     """
     Convert a single piece of text into an embedding vector.
     """
-    return model.encode(text).tolist()
+    embedding = list(model.embed([text]))[0]
+    return embedding.tolist()
 
 
 def generate_embeddings(texts):
     """
     Convert multiple text chunks into embedding vectors.
     """
-    return model.encode(texts).tolist()
+    embeddings = model.embed(texts)
+    return [embedding.tolist() for embedding in embeddings]
